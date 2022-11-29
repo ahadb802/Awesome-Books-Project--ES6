@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Awesome Books Todo List</title>
 </head>
 <body>
-  <h1>Awesome Books</h1>
-  <section class="book-list">
-  </section>
-  <form>
-    <input type="text" placeholder="Title" class="form-book-title" value="" required>
-    <input type="text" placeholder="Author" class="form-author-name" value="" required>
-    <input type="submit" value="Add" class="add-button">
-  </form>
-  <script src="script.js"></script>
+    <div class="container">
+        <h1 class="title">All Awesome Books</h1>
+        <div class="lists" data-lists>
+          
+        </div>
+        <span class="bar"></span>
+        <form class="form" data-form>
+            <h2> Add a new book</h2>
+            <input type="text" placeholder="title..." required title>
+            <input type="text" placeholder="Auther..." required author>
+            <button class="btn">Add</button>
+        </form>
+        
+    </div>
+    <script src="script.js" defer></script>
 </body>
 </html>

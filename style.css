@@ -1,17 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.bar {
+  height: 2px;
+  width: 18%;
+  background: #000;
+}
+
+.lists {
+  border: 2px solid black;
+  width: 95%;
+  height: auto;
+}
+
+.active {
+  background: silver;
+}
+
+.todo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  height: 30px;
+}
+
 form {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  width: 20%;
-  row-gap: 0.5em;
+  align-items: flex-end;
+  gap: 15px;
 }
 
-h4 {
-  margin: 0;
-  border: 0;
-}
-
-p {
-  margin: 0;
-  border: 0;
+button {
+  width: 60px;
+  background-color: white !important;
 }

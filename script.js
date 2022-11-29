@@ -1,93 +1,105 @@
-/* Initialize a book object with necessary keys */
+// grab all elements
+const form = document.querySelector('[data-form]');
+const lists = document.querySelector('[data-lists]');
+const bookTitle = document.querySelector('[title]');
+const bookAuthor = document.querySelector('[author]');
 
-const bookArray = [];
+/* eslint max-classes-per-file: ["error", 3] */
 
-/* Initialize necessary variables */
+// local Storage
+class Storage {
+  static addTodStorage(todoArr) {
+    const storage = localStorage.setItem('todo', JSON.stringify(todoArr));
+    return storage;
+  }
 
-const bookList = document.querySelector('.book-list');
-const titleValue = document.querySelector('.form-book-title');
-const authorValue = document.querySelector('.form-author-name');
-const form = document.querySelector('form');
-const keys = [];
-
-/* Declare a function to add books in HTML */
-
-function addBooks(index) {
-  const article = document.createElement('article');
-  article.classList.add('books');
-  const id = `article${index}`;
-  article.setAttribute('id', id);
-  article.innerHTML = `  
-  <h4 class="book-name">${bookArray[index].bookTitle}</h4>
-  <p class="author-name">${bookArray[index].authorName}</p>
-  <button class="remove-button" id="${index}" onclick="removeButtons(id)">Remove</button>
-  <hr>`;
-  bookList.appendChild(article);
-}
-
-/* eslint-disable no-unused-vars */
-
-function removeButtons(id) {
-  const articleID = `#article${id}`;
-  const removeArticle = document.querySelector(articleID);
-  bookList.removeChild(removeArticle);
-  window.localStorage.removeItem(keys[id]);
-}
-
-let i = 0;
-
-/* Declare a function to create bookObject and push it to bookArray */
-
-function add(bookTitle, authorName) {
-  const bookObject = {
-    bookTitle: '',
-    authorName: '',
-  };
-  bookObject.bookTitle = bookTitle;
-  bookObject.authorName = authorName;
-  bookArray.push(bookObject);
-  addBooks(i);
-  i += 1;
-}
-
-/* Using local storage */
-
-const storedDataArray = [];
-
-function dataStore(index) {
-  const name = `name ${index}`;
-  localStorage.setItem(name, JSON.stringify(storedDataArray[index]));
-  keys.push(name);
-}
-
-let position = 0;
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const storedData = {
-    title: '',
-    author: '',
-  };
-  storedData.title = titleValue.value;
-  storedData.author = authorValue.value;
-  storedDataArray.push(storedData);
-  dataStore(position);
-  add(storedData.title, storedData.author);
-  position += 1;
-  titleValue.value = null;
-  authorValue.value = null;
-});
-
-// checking for conditions
-
-if (JSON.parse(localStorage !== null)) {
-  for (let x = 0; x < localStorage.length; x += 1) {
-    const storedData = JSON.parse(localStorage.getItem(localStorage.key(x)));
-    if (storedData !== null) {
-      storedDataArray.push(storedData);
-      keys.push(localStorage.key(x));
-      add(storedData.title, storedData.author);
-      position += 1;
-    }
+  static getStorage() {
+    const storage = localStorage.getItem('todo') === null
+      ? [] : JSON.parse(localStorage.getItem('todo'));
+    return storage;
   }
 }
+
+// empty array
+let todoArr = Storage.getStorage();
+
+// make object instance
+class Todo {
+  constructor(id, title, author) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+  }
+}
+
+// display the todo in the DOM;
+class UI {
+  static displayData() {
+    const displayData = todoArr.map((item) => `
+            <div class="todo">
+            <div>
+            <span>"${item.title}" by</span>
+            <span> ${item.author}</span>
+            </div>
+            <button class="remove" data-id = ${item.id}>Remove</button>
+            </div>
+            `);
+    lists.innerHTML = (displayData).join(' ');
+  }
+
+  static colorChanger() {
+    const todos = document.querySelectorAll('.todo');
+    let count = 1;
+    todos.forEach((item) => {
+      if (count % 2 !== 0) {
+        item.classList.add('active');
+      } else if (item.classList.contains('active')) {
+        item.classList.remove('active');
+      }
+      count += 1;
+    });
+  }
+
+  static clearInput() {
+    bookTitle.value = '';
+    bookAuthor.value = '';
+  }
+
+  static removeTodo() {
+    lists.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove')) {
+        e.target.parentElement.remove();
+      }
+      const btnId = e.target.dataset.id;
+      // remove from array.
+      UI.removeArrayTodo(btnId);
+    });
+  }
+
+  static removeArrayTodo(id) {
+    todoArr = todoArr.filter((item) => item.id !== +id);
+    Storage.addTodStorage(todoArr);
+    UI.colorChanger();
+  }
+}
+
+// form part
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const id = Math.random() * 1000000;
+  const todo = new Todo(id, bookTitle.value, bookAuthor.value);
+  todoArr = [...todoArr, todo];
+  UI.displayData();
+  UI.colorChanger();
+  UI.clearInput();
+  // add to storage
+  Storage.addTodStorage(todoArr);
+});
+
+// once the browser is loaded
+window.addEventListener('DOMContentLoaded', () => {
+  UI.displayData();
+  UI.colorChanger();
+  // remove from the dom
+  UI.removeTodo();
+});
