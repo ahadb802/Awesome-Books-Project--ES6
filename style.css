@@ -1,0 +1,17 @@
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 20%;
+  row-gap: 0.5em;
+}
+
+h4 {
+  margin: 0;
+  border: 0;
+}
+
+p {
+  margin: 0;
+  border: 0;
+}
