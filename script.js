@@ -78,7 +78,7 @@ form.addEventListener('submit', (event) => {
   authorValue.value = null;
 });
 
-//checking for conditions
+// checking for conditions
 
 if (JSON.parse(localStorage !== null)) {
   for (let x = 0; x < localStorage.length; x += 1) {
