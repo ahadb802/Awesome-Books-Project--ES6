@@ -4,25 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="index.css">
+    <script type="module" src="./index.js"></script>
     <title>Awesome Books Todo List</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#lists"> Awesome Books</a>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <a href="#lists" id="lists-item">lists</a>
+                    </li>
+                    <li>
+                        <a href="#form" id="lists-item-add">Add New</a>
+                    </li>
+                    <li>
+                        <a href="#contact" id="lists-item-conatct">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="date">
+
+        </div>
+    </header>
     <div class="container">
         <h1 class="title">All Awesome Books</h1>
-        <div class="lists" data-lists>
-          
+        <div id="lists">
+            <div class="lists"  data-lists>
+            
         </div>
-        <span class="bar"></span>
-        <form class="form" data-form>
+    </div>
+        <form class="form" id="form" data-form>
             <h2> Add a new book</h2>
             <input type="text" placeholder="title..." required title>
             <input type="text" placeholder="Auther..." required author>
             <button class="btn">Add</button>
         </form>
-        
+    
+        <div class="contact-form" id="contact">
+            <h2> Contact Information</h2>
+            <p>Do have any questions or you just want to say "Hello"?</p>
+            <p>You can reach out to us!</p>
+            <ul>
+                <li>
+                    <p>Our e-mail : <e-mail>abdulahadb802@gmail.com</e-mail></p>
+                </li>
+                <li>
+                    <p>Our phone number : +923104290048</p>
+                </li>
+                <li>
+                    <p>Our addres : Streetname 23 , 24000 Lahore, Pakistan</p>
+                </li>
+            </ul>
+
+        </div>
     </div>
-    <script src="script.js" defer></script>
+    <footer>
+        <div class="logo">
+            <a href="#">Copyright   ...</a>
+        </div>
+    </footer>
 </body>
 </html>
