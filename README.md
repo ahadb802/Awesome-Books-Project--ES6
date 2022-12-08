@@ -82,7 +82,7 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-Live demo of the project can be seen <a href="https://ahadb802.github.io/Awesome-Books-Project/">here.</a>
+Live demo of the project can be seen <a href="https://ahadb802.github.io/Awesome-Books-Project--ES6/">here.</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
