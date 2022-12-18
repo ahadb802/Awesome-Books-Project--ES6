@@ -107,14 +107,14 @@ $ node --version && npm --version
 ```
 ### Setup
 
-Clone the repository using [this link](https://github.com/PrangonGhose/My-Portfolio.git)
+Clone the repository using [this link](https://github.com/ahadb802/Awesome-Books-Project--ES6.git)
 
 ### Install
 
 In the terminal, go to your file directory and run this command.
 
 ```
-$ git clone git@github.com:mavericks-db/portfolio.git
+$ git clone https://github.com/ahadb802/Awesome-Books-Project--ES6.git
 ```
 
 ### Usage
